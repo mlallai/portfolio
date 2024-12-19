@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
-import { UsecasesProxyModule } from '../../../infrastructure/usecases-proxy/usecases-proxy.module';
-import { UseCaseProxy } from '../../../infrastructure/usecases-proxy/usecases-proxy';
+import { UsecasesProxyModule } from '../../usecases-proxy/usecases-proxy.module';
+import { UseCaseProxy } from '../../usecases-proxy/usecases-proxy';
 import { getAllProjectsUseCase } from '../../../application/use-cases/projects/getAllProjects.usecase';
-import { CreateProjectControllerDto } from '../../../infrastructure/dtos/project.dtos';
+import { CreateProjectControllerDto } from '../../dtos/project.dtos';
 import { createProjectUseCase } from '../../../application/use-cases/projects/createProject.usecase';
 
 @Controller('projects')

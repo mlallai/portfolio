@@ -17,12 +17,12 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
-        working-directory: public-dao-api
+        working-directory: backend-api
       - name: Build Docker image
-        run: docker build -t public-dao-api ./public-dao-api
+        run: docker build -t backend-api ./backend-api
       - name: Run tests
         run: npm run test
-        working-directory: public-dao-api
+        working-directory: backend-api
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -30,8 +30,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Docker image into AWS ECR
         run: |
-          docker tag public-dao-api mlallai/public-dao-api:latest
-          docker push mlallai/public-dao-api:latest
+          docker tag backend-api mlallai/backend-api:latest
+          docker push mlallai/backend-api:latest
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -41,8 +41,8 @@ jobs:
       - name: Log in to Amazon ECR
         run: aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-3.amazonaws.com
       - name: Pull latest Docker image
-        run: docker pull mlallai/public-dao-api:latest
+        run: docker pull mlallai/backend-api:latest
       - name: Tag Docker image for ECR
-        run: docker tag public-dao-api:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-3.amazonaws.com/public-dao-api:latest
+        run: docker tag backend-api:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-3.amazonaws.com/backend-api:latest
       - name: Push Docker image to ECR
-        run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-3.amazonaws.com/public-dao-api:latest
+        run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-3.amazonaws.com/backend-api:latest

@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  public-dao-api:
+  backend-api:
     build:
       context: .
       target: install-dependencies
@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./public-dao-api/src:/usr/src/app/src/
+      - ./backend-api/src:/usr/src/app/src/
 
   db:
     image: postgres:14-alpine

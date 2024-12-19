@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProjectController } from './project.controller';
-import { UsecasesProxyModule } from '../../../infrastructure/usecases-proxy/usecases-proxy.module';
+import { UsecasesProxyModule } from '../../usecases-proxy/usecases-proxy.module';
 
 describe('ProjectController', () => {
   let projectController: ProjectController;

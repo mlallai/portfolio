@@ -30,14 +30,14 @@ cd clean-architecture-backend
 docker-compose up
 ```
 
-### 2. Kubernetes Deployment
+### 2. Node JS App Kubernetes Deployment with AWS EKS
 
 This project demonstrates a simple Node.js application deployed to AWS EKS. It includes a shell script to automate the deployment process on ECR and EKS.
 
 To navigate to this project, use the following command:
 
 ```bash
-cd k8s-deployment
+cd k8s-web-hello
 ```
 
 To deploy the application, run the following script (adapt to your own AWS credentials):

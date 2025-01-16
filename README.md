@@ -6,11 +6,11 @@ Welcome to my portfolio repository. This repository contains various work projec
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/portfolio.git
+   git clone https://github.com/mlallai/portfolio.git
    ```
 2. Navigate to the desired project folder:
    ```bash
-   cd portfolio/<project-folder>
+   cd <project-folder>
    ```
 
 Feel free to explore the projects and reach out if you have any questions or feedback.

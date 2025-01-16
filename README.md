@@ -28,3 +28,19 @@ cd clean-architecture-backend
 Feel free to explore the projects and reach out if you have any questions or feedback.
 
 Thank you for visiting my portfolio repository!
+
+### 2. Kubernetes Deployment
+
+This project demonstrates a simple Node.js application deployed to AWS EKS. It includes a shell script to automate the deployment process on ECR and EKS.
+
+To navigate to this project, use the following command:
+
+```bash
+cd k8s-deployment
+```
+
+To deploy the application, run the following script (adapt to your own AWS credentials):
+
+```bash
+./deploy.sh
+```

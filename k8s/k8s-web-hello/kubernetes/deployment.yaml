@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-web-hello
+  labels:
+    app: k8s-web-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-web-hello
+  template:
+    metadata:
+      labels:
+        app: k8s-web-hello
+    spec:
+      containers:
+      - name: k8s-web-hello
+        image: ${AWS_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/k8s-web-hello:latest
+        env: 
+          - name: AWS_ID
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets
+                key: AWS_ID
+          - name: AWS_REGION
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets
+                key: AWS_REGION
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"

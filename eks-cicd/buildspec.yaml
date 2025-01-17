@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 343299863709.dkr.ecr.eu-west-3.amazonaws.com
+
+  build:
+    commands:
+      - docker build -t eks-cicd .
+      - docker tag eks-cicd:latest 343299863709.dkr.ecr.eu-west-3.amazonaws.com/eks-cicd:latest
+  post-build:
+    commands:
+      - docker push 343299863709.dkr.ecr.eu-west-3.amazonaws.com/eks-cicd:latest
